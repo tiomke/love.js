@@ -1,4 +1,4 @@
-Love.js for LÖVE v11.4
+Love.js for LÖVE v11.5
 ============
 Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) to the latest and greatest versions of LÖVE and Emscripten.
 
