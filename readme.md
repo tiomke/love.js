@@ -2,6 +2,31 @@ Love.js for LÖVE v11.5
 ============
 Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) to the latest and greatest versions of LÖVE and Emscripten.
 
+## 本Fork说明
+
+主要是修改了 index.html 模版的内容，原来的模板适合在网页直接运行，不适合在 itch.io 上展示，做了一点适配。
+
+### 生成网页
+
+```
+npx love.js -c <SourcePath> <DestPath> -t <GameName>
+```
+- **SourcePath** `main.lua` 所在目录
+- **DestPath** HTML 的导出目录
+- **GameName** 游戏名
+- 这里的 -c 表示兼容模式，会用 compact 目录下的模版，不开启多线程
+
+### 运行游戏
+
+```bash
+$ python3 -m http.server 8000 
+```
+这个方式下，存在两个问题，一是加载很快，可能看不到加载页面；二是游戏会直接拉伸到浏览器页面大小。
+
+### 上传itch.io
+
+将 DestPath 目录下的内容压缩打包上传即可。
+
 ## Demos
  * [Specification Test](https://davidobot.net/lovejs/lovejs_spec/); [(Compatibility Version)](https://davidobot.net/lovejs/lovejs_spec_c/) (threads, coroutines, shaders!)
  * [Another Kind of World](https://davidobot.net/lovejs/akow/); [(Compatibility Version)](https://davidobot.net/lovejs/akow_c/)
@@ -117,3 +142,5 @@ Note, using v:2.0.0 is important as newer versions have depreciated `getMemory`
 Clone the [megasource](https://github.com/Davidobot/megasource/tree/emscripten) and [love](https://github.com/Davidobot/love/tree/emscripten) and then run `build_lovejs.bat` (with minor changes for file paths) in PowerShell.
 
 Make sure you have CMake and Make (e.g. through [chocolatey](https://chocolatey.org/packages/make)), and that you have the latest Visual Studio build bundles installed. Clone [emsdk](https://github.com/emscripten-core/emsdk) and edit `build_lovejs.bat` to point to the right paths.
+
+
