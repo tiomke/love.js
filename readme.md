@@ -8,8 +8,8 @@ Basically trying to adapt [love.js](https://github.com/TannerRogalsky/love.js) t
 
 ### 生成网页
 
-```
-npx love.js -c <SourcePath> <DestPath> -t <GameName>
+```bash
+$ npx love.js -c <SourcePath> <DestPath> -t <GameName>
 ```
 - **SourcePath** `main.lua` 所在目录
 - **DestPath** HTML 的导出目录
@@ -19,13 +19,23 @@ npx love.js -c <SourcePath> <DestPath> -t <GameName>
 ### 运行游戏
 
 ```bash
+$ cd <DestPath>
 $ python3 -m http.server 8000 
 ```
-这个方式下，存在两个问题，一是加载很快，可能看不到加载页面；二是游戏会直接拉伸到浏览器页面大小。
+
+打开浏览器，输入 `localhost:8000` 体验游戏。
 
 ### 上传itch.io
 
 将 DestPath 目录下的内容压缩打包上传即可。
+
+```bash
+$ cd <DestPath>
+$ zip -r <ZipFileName>.zip . -x "*.zip" -x ".*"
+```
+- **ZipFileName** 压缩包名字，最好用英文
+- `-r` 表示递归压缩子目录的文件
+- `-x` 表示将符合通配符的文件或者目录排除，不进行压缩
 
 ## Demos
  * [Specification Test](https://davidobot.net/lovejs/lovejs_spec/); [(Compatibility Version)](https://davidobot.net/lovejs/lovejs_spec_c/) (threads, coroutines, shaders!)
